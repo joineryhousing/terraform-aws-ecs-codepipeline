@@ -228,7 +228,18 @@ resource "aws_codepipeline" "source_build_deploy" {
   }
 
   stage {
-    name = "Build"
+    name = "Approve Build and Test"
+    action {
+      name = "Approval"
+      category = "Approval"
+      owner = "AWS"
+      provider = "CodeBuild"
+      version  = "1"
+    }
+  }
+
+  stage {
+    name = "Build and Test"
 
     action {
       name     = "Build"
