@@ -167,7 +167,7 @@ data "aws_caller_identity" "default" {}
 data "aws_region" "default" {}
 
 module "build" {
-  source                = "git::https://github.com/cloudposse/terraform-aws-codebuild.git?ref=tags/0.12.1"
+  source                = "git::ssh://git@github.com/joineryhousing/terraform-aws-codebuild.git"
   enabled               = "${var.enabled}"
   namespace             = "${var.namespace}"
   name                  = "${var.name}"
@@ -237,28 +237,10 @@ resource "aws_codepipeline" "source_build_deploy" {
       version  = "1"
 
       input_artifacts  = ["code"]
-      output_artifacts = ["task"]
+      #output_artifacts = ["task"]
 
       configuration {
         ProjectName = "${module.build.project_name}"
-      }
-    }
-  }
-
-  stage {
-    name = "Deploy"
-
-    action {
-      name            = "Deploy"
-      category        = "Deploy"
-      owner           = "AWS"
-      provider        = "ECS"
-      input_artifacts = ["task"]
-      version         = "1"
-
-      configuration {
-        ClusterName = "${var.ecs_cluster_name}"
-        ServiceName = "${var.service_name}"
       }
     }
   }
