@@ -228,7 +228,7 @@ resource "aws_codepipeline" "source_build_deploy" {
   }
 
   stage {
-    name = "Approve Build and Test"
+    name = "Approve"
     action {
       name = "Approval"
       category = "Approval"
@@ -239,7 +239,7 @@ resource "aws_codepipeline" "source_build_deploy" {
   }
 
   stage {
-    name = "Build and Test"
+    name = "Build"
 
     action {
       name     = "Build"
