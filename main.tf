@@ -187,6 +187,7 @@ module "build" {
   github_token          = "${var.github_oauth_token}"
   environment_variables = "${var.environment_variables}"
   badge_enabled         = "${var.badge_enabled}"
+  asset_bucket_name     = "${var.asset_bucket_name}"
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild_s3" {

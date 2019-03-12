@@ -156,3 +156,9 @@ variable "webhook_filter_match_equals" {
   description = "The value to match on (e.g. refs/heads/{Branch})"
   default     = "refs/heads/{Branch}"
 }
+
+variable "asset_bucket_name" {
+  type = "string"
+  default = ""
+  description = "The name of the asset bucket to permission the build to"
+}
