@@ -99,7 +99,7 @@ variable "privileged_mode" {
 
 variable "aws_region" {
   type        = "string"
-  default     = ""
+  default     = "us-east-1"
   description = "AWS Region, e.g. us-east-1. Used as CodeBuild ENV variable when building Docker images. [For more info](http://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html)"
 }
 
