@@ -233,7 +233,7 @@ resource "aws_codepipeline" "source_build_deploy" {
       name = "Approval"
       category = "Approval"
       owner = "AWS"
-      provider = "CodeBuild"
+      provider = "Manual"
       version  = "1"
     }
   }
