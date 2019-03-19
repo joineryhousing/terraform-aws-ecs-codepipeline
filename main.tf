@@ -167,7 +167,7 @@ data "aws_caller_identity" "default" {}
 data "aws_region" "default" {}
 
 module "build" {
-  source                = "git::ssh://git@github.com/joineryhousing/terraform-aws-codebuild.git"
+  source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git"
   enabled               = "${var.enabled}"
   namespace             = "${var.namespace}"
   name                  = "${var.name}"
