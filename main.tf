@@ -227,16 +227,16 @@ resource "aws_codepipeline" "source_build_deploy" {
     }
   }
 
-  stage {
-    name = "Approve"
-    action {
-      name = "Approval"
-      category = "Approval"
-      owner = "AWS"
-      provider = "Manual"
-      version  = "1"
-    }
-  }
+  # stage {
+  #   name = "Approve"
+  #   action {
+  #     name = "Approval"
+  #     category = "Approval"
+  #     owner = "AWS"
+  #     provider = "Manual"
+  #     version  = "1"
+  #   }
+  # }
 
   stage {
     name = "Build"
