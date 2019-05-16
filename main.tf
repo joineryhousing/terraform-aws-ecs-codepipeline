@@ -65,7 +65,6 @@ data "aws_iam_policy_document" "default" {
     sid = ""
 
     actions = [
-      "ec2:*",
       "elasticloadbalancing:*",
       "autoscaling:*",
       "cloudwatch:*",
