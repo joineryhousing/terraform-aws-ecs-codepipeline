@@ -171,3 +171,9 @@ variable "s3_bucket_name" {
   default = ""
   description = "The name of the s3 bucket to permission the build to"
 }
+
+variable "deploy_s3_bucket_name" {
+  type = "string"
+  default = ""
+  description = "The name of the s3 bucket to permission the deploy to"
+}

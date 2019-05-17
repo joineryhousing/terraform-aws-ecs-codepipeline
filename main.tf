@@ -210,7 +210,7 @@ module "deploy" {
   github_token          = "${var.github_oauth_token}"
   environment_variables = "${var.environment_variables}"
   badge_enabled         = "${var.badge_enabled}"
-  s3_bucket_name        = "${var.s3_bucket_name}"
+  s3_bucket_name        = "${var.deploy_s3_bucket_name}"
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild_s3" {
