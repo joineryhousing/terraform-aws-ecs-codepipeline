@@ -200,7 +200,7 @@ module "deploy" {
   build_timeout         = "${var.build_timeout}"
   buildspec             = "${var.deploy_buildspec}"
   delimiter             = "${var.delimiter}"
-  attributes            = "${concat(var.attributes, list("build"))}"
+  attributes            = "${concat(var.attributes, list("deploy"))}"
   tags                  = "${var.tags}"
   privileged_mode       = "${var.privileged_mode}"
   aws_region            = "${signum(length(var.aws_region)) == 1 ? var.aws_region : data.aws_region.default.name}"
