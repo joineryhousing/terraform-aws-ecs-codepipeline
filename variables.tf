@@ -66,6 +66,15 @@ variable "buildspec" {
   description = "Declaration to use for building the project. [For more info](http://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)"
 }
 
+variable "test_buildspec" {
+  default     = ""
+  description = "Declaration to use for testing the project. [For more info](http://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)"
+}
+
+variable "deploy_buildspec" {
+  default     = ""
+  description = "Declaration to use for deploying the project. [For more info](http://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)"
+}
 # https://www.terraform.io/docs/configuration/variables.html
 # It is recommended you avoid using boolean values and use explicit strings
 variable "poll_source_changes" {
@@ -157,8 +166,8 @@ variable "webhook_filter_match_equals" {
   default     = "refs/heads/{Branch}"
 }
 
-variable "asset_bucket_name" {
+variable "s3_bucket_name" {
   type = "string"
   default = ""
-  description = "The name of the asset bucket to permission the build to"
+  description = "The name of the s3 bucket to permission the build to"
 }
