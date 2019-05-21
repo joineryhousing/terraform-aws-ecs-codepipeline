@@ -189,6 +189,30 @@ module "build" {
   s3_bucket_name     = "${var.s3_bucket_name}"
 }
 
+module "test" {
+  source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git"
+  enabled               = "${var.enabled}"
+  namespace             = "${var.namespace}"
+  name                  = "${var.name}"
+  stage                 = "${var.stage}"
+  build_image           = "${var.build_image}"
+  build_compute_type    = "${var.build_compute_type}"
+  build_timeout         = "${var.build_timeout}"
+  buildspec             = "${var.test_buildspec}"
+  delimiter             = "${var.delimiter}"
+  attributes            = "${concat(var.attributes, list("test"))}"
+  tags                  = "${var.tags}"
+  privileged_mode       = "${var.privileged_mode}"
+  aws_region            = "${signum(length(var.aws_region)) == 1 ? var.aws_region : data.aws_region.default.name}"
+  aws_account_id        = "${signum(length(var.aws_account_id)) == 1 ? var.aws_account_id : data.aws_caller_identity.default.account_id}"
+  image_repo_name       = "${var.image_repo_name}"
+  image_tag             = "${var.image_tag}"
+  github_token          = "${var.github_oauth_token}"
+  environment_variables = "${var.environment_variables}"
+  badge_enabled         = "${var.badge_enabled}"
+  s3_bucket_name     = "${var.s3_bucket_name}"
+}
+
 module "deploy" {
   source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git"
   enabled               = "${var.enabled}"
@@ -265,6 +289,25 @@ resource "aws_codepipeline" "source_build_deploy" {
 
       configuration {
         ProjectName = "${module.build.project_name}"
+      }
+    }
+  }
+
+  stage {
+    name = "Test"
+
+    action {
+      name     = "Build"
+      category = "Build"
+      owner    = "AWS"
+      provider = "CodeBuild"
+      version  = "1"
+
+      input_artifacts  = ["code"]
+      #output_artifacts = ["task"]
+
+      configuration {
+        ProjectName = "${module.test.project_name}"
       }
     }
   }
