@@ -156,7 +156,7 @@ data "aws_iam_policy_document" "codebuild" {
       "codebuild:*",
     ]
 
-    resources = ["${module.build.project_id}", "${module.deploy.project_id}"]
+    resources = ["${module.build.project_id}", "${module.test.project_id}", "${module.deploy.project_id}"]
     effect    = "Allow"
   }
 }
