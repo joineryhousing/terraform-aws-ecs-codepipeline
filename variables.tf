@@ -177,3 +177,9 @@ variable "deploy_s3_bucket_name" {
   default = ""
   description = "The name of the s3 bucket to permission the deploy to"
 }
+
+variable "sns_arn" {
+  type = "string"
+  default = ""
+  description = "The arn of the sns channel to publish notifications"
+}

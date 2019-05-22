@@ -320,6 +320,12 @@ resource "aws_codepipeline" "source_build_deploy" {
       owner = "AWS"
       provider = "Manual"
       version  = "1"
+
+      configuration {
+        NotificationArn = "${var.sns_arn}"
+        CustomData = "TEST"
+        ExternalEntityLink = "https://joinery.nyc"
+      }
     }
   }
 
