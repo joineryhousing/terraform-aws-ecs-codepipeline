@@ -166,7 +166,7 @@ data "aws_caller_identity" "default" {}
 data "aws_region" "default" {}
 
 module "build" {
-  source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git"
+  source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git?ref=0.14.0"
   enabled               = "${var.enabled}"
   namespace             = "${var.namespace}"
   name                  = "${var.name}"
@@ -190,7 +190,7 @@ module "build" {
 }
 
 module "test" {
-  source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git"
+  source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git?ref=0.14.0"
   enabled               = "${var.enabled}"
   namespace             = "${var.namespace}"
   name                  = "${var.name}"
@@ -214,7 +214,7 @@ module "test" {
 }
 
 module "deploy" {
-  source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git"
+  source                = "git::https://github.com/joineryhousing/terraform-aws-codebuild.git?ref=0.14.0"
   enabled               = "${var.enabled}"
   namespace             = "${var.namespace}"
   name                  = "${var.name}"
